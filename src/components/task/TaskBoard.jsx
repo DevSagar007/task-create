@@ -6,7 +6,6 @@ import TaskList from "./TaskList";
 import AddTaskModal from "./AddTaskModal";
 
 function TaskBoard() {
-
   const defaultTask = {
     id: crypto.randomUUID(),
     title: "API Data Synchronization with java",
@@ -20,9 +19,10 @@ function TaskBoard() {
   const [tasks, setTasks] = useState([defaultTask]);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
-  function handleAddTask(task) {
-    console.log('Adding a task', task);
-    
+  function handleAddTask(newTask) {
+    console.log("Adding a task", newTask);
+    setTasks([...tasks, newTask]);
+    setShowAddTaskModal(false);
   }
 
   return (
