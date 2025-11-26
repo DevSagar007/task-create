@@ -66,13 +66,13 @@ function TaskBoard() {
     setTasks(newTasks);
   }
 
-  function handleSearch (searchTerm) {
+  function handleSearch(searchTerm) {
     console.log(searchTerm);
     const filtered = tasks.filter((tasks) =>
       tasks.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
     );
     setTasks([...filtered]);
-   }
+  }
 
   return (
     <>
@@ -96,12 +96,16 @@ function TaskBoard() {
               onAddTask={() => setShowAddTaskModal(true)}
               onDeleteAllClick={handleDeleteAllClick}
             />
-            <TaskList
-              tasks={tasks}
-              onEdit={handleEditTask}
-              onDelete={handleDeleteTask}
-              onFav={handleFavourite}
-            />
+            {tasks.length > 0 ? (
+              <TaskList
+                tasks={tasks}
+                onEdit={handleEditTask}
+                onDelete={handleDeleteTask}
+                onFav={handleFavourite}
+              />
+            ) : (
+              " not task found"
+            )}
           </div>
         </div>
       </section>
